@@ -1,0 +1,39 @@
+{
+  "language": {
+    "label": "Язык"
+  },
+  "core": {
+    "version": "ARoute Core {version}",
+    "unreachable": "ARoute Core не отвечает"
+  },
+  "login": {
+    "title": "Вход",
+    "password": "Пароль",
+    "submit": "Войти",
+    "noAuthYet": "Эта версия Core ещё не проверяет пароль. Защита входа появится на этапе M1."
+  },
+  "nav": {
+    "signOut": "Выйти"
+  },
+  "dashboard": {
+    "title": "Обзор",
+    "system": "Система",
+    "loadFailed": "Не удалось получить состояние роутера.",
+    "retry": "Повторить",
+    "fields": {
+      "version": "Версия Core",
+      "apiVersion": "Версия API",
+      "hostname": "Имя хоста",
+      "os": "Операционная система",
+      "kernel": "Ядро",
+      "uptime": "Время работы системы",
+      "daemonUptime": "Время работы Core"
+    }
+  },
+  "duration": {
+    "days": "{n} д",
+    "hours": "{n} ч",
+    "minutes": "{n} мин",
+    "seconds": "{n} с"
+  }
+}

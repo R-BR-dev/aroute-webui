@@ -1,0 +1,134 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "ARoute Core API",
+    "description": "Management API of an ARoute router. The Web-UI and the `aroute` CLI are clients of it.",
+    "license": {
+      "name": "GPL-3.0-only",
+      "identifier": "GPL-3.0-only"
+    },
+    "version": "0.0.1"
+  },
+  "paths": {
+    "/api/v1/system/info": {
+      "get": {
+        "tags": [
+          "system"
+        ],
+        "summary": "Versions and basic facts about the router.",
+        "operationId": "info",
+        "responses": {
+          "200": {
+            "description": "The router is up",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SystemInfo"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Host information could not be read",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorBody"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ErrorBody": {
+        "type": "object",
+        "description": "Body of every error response.",
+        "required": [
+          "error"
+        ],
+        "properties": {
+          "error": {
+            "$ref": "#/components/schemas/ErrorDetail"
+          }
+        }
+      },
+      "ErrorDetail": {
+        "type": "object",
+        "required": [
+          "code",
+          "message"
+        ],
+        "properties": {
+          "code": {
+            "type": "string",
+            "description": "Stable machine-readable identifier.",
+            "example": "not_found"
+          },
+          "message": {
+            "type": "string",
+            "description": "Description for humans; may change between versions."
+          }
+        }
+      },
+      "SystemInfo": {
+        "type": "object",
+        "description": "Response of `GET /api/v1/system/info`.",
+        "required": [
+          "version",
+          "api_version",
+          "hostname",
+          "os",
+          "kernel",
+          "uptime_seconds",
+          "daemon_uptime_seconds"
+        ],
+        "properties": {
+          "api_version": {
+            "type": "string",
+            "description": "Version of the REST API.",
+            "example": "v1"
+          },
+          "daemon_uptime_seconds": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Seconds since `arouted` started.",
+            "minimum": 0
+          },
+          "hostname": {
+            "type": "string"
+          },
+          "kernel": {
+            "type": "string",
+            "description": "Kernel release."
+          },
+          "os": {
+            "type": "string",
+            "description": "Operating system name.",
+            "example": "Fedora Linux 44 (Server Edition)"
+          },
+          "uptime_seconds": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Seconds since the system booted.",
+            "minimum": 0
+          },
+          "version": {
+            "type": "string",
+            "description": "Version of the ARoute Core.",
+            "example": "0.1.0"
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "system",
+      "description": "The router itself: versions, host facts"
+    }
+  ]
+}

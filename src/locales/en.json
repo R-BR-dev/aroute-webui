@@ -1,0 +1,39 @@
+{
+  "language": {
+    "label": "Language"
+  },
+  "core": {
+    "version": "ARoute Core {version}",
+    "unreachable": "ARoute Core is not responding"
+  },
+  "login": {
+    "title": "Sign in",
+    "password": "Password",
+    "submit": "Sign in",
+    "noAuthYet": "This version of the Core does not check the password yet. Sign-in protection arrives with milestone M1."
+  },
+  "nav": {
+    "signOut": "Sign out"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "system": "System",
+    "loadFailed": "Could not read the router's status.",
+    "retry": "Try again",
+    "fields": {
+      "version": "Core version",
+      "apiVersion": "API version",
+      "hostname": "Host name",
+      "os": "Operating system",
+      "kernel": "Kernel",
+      "uptime": "System uptime",
+      "daemonUptime": "Core uptime"
+    }
+  },
+  "duration": {
+    "days": "{n} d",
+    "hours": "{n} h",
+    "minutes": "{n} min",
+    "seconds": "{n} s"
+  }
+}

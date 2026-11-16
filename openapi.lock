@@ -1,0 +1,5 @@
+# The Core API this UI is built against.
+# Written by scripts/update-api.sh; do not edit by hand.
+core_version = 0.0.1
+source = aroute-core 955e618
+sha256 = e48fd4eb828398eb1601af8f05b9b57c4824c51b1a9f4ae58a8d38f3fe73355f
