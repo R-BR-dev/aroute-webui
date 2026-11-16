@@ -1,0 +1,39 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+# Both jobs run in the Fedora release ARoute targets, with Fedora's own Node.js,
+# and call the same scripts a developer runs locally.
+jobs:
+  check:
+    name: Format, lint, test, build
+    runs-on: ubuntu-latest
+    container: registry.fedoraproject.org/fedora:44
+    steps:
+      - name: Install Node.js
+        run: dnf -y install nodejs-npm git-core
+      - uses: actions/checkout@v7
+      - run: npm ci
+      - run: sh scripts/check.sh
+
+  rpm:
+    name: Build RPM
+    needs: check
+    runs-on: ubuntu-latest
+    container: registry.fedoraproject.org/fedora:44
+    steps:
+      - name: Install git
+        run: dnf -y install git-core
+      - uses: actions/checkout@v7
+      - name: Trust the checkout
+        run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
+      - run: sh packaging/build-rpm.sh
+      # Signing and upload to repo.rnbr-dev.com are done by hand from this artifact.
+      - uses: actions/upload-artifact@v7
+        with:
+          name: rpm
+          path: dist/*.rpm
+          if-no-files-found: error

@@ -1,0 +1,15 @@
+node_modules
+
+# Vite output (the app) and packaging output (tarball, RPMs)
+/build
+/dist
+
+# Tool caches
+*.tsbuildinfo
+.eslintcache
+coverage
+
+# Local overrides and editors
+*.local
+.idea
+.vscode

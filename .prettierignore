@@ -1,0 +1,7 @@
+/build
+/dist
+package-lock.json
+
+# Copied from the Core and generated from that copy: neither is edited here.
+/openapi.json
+/src/api/schema.d.ts

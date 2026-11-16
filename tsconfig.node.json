@@ -1,0 +1,16 @@
+// Tooling: code that runs in Node.js (Vite and ESLint configuration, the mock API).
+{
+  "extends": "@tsconfig/node24/tsconfig.json",
+  "include": ["vite.config.*", "eslint.config.*", "mock/**/*"],
+  "compilerOptions": {
+    "module": "preserve",
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "resolveJsonModule": true,
+    "types": ["node"],
+    "noEmit": true,
+    "noUncheckedIndexedAccess": true,
+
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.node.tsbuildinfo"
+  }
+}
